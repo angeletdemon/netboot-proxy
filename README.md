@@ -81,6 +81,15 @@ get netboot.xyz.kpxe
 - Check that your network allows broadcast/multicast for DHCP proxy
 - Verify the DHCP_RANGE matches your network
 
+## Acknowledgments
+
+This project is a thin wrapper around [netboot.xyz](https://netboot.xyz), an open-source network boot project that provides iPXE-powered bootloaders and menus for installing a wide variety of operating systems. All the boot menus, OS installers, and utilities you see when PXE booting come from netboot.xyz.
+
+- **netboot.xyz**: https://netboot.xyz
+- **netboot.xyz GitHub**: https://github.com/netbootxyz/netboot.xyz
+
+If you find this useful, consider supporting the netboot.xyz project directly.
+
 ## License
 
 MIT
