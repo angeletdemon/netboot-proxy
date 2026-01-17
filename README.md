@@ -1,6 +1,6 @@
 # netboot-proxy
 
-A lightweight PXE boot server using dnsmasq and [netboot.xyz](https://netboot.xyz). Enables network booting for OS installations without modifying your existing DHCP server.
+A lightweight PXE boot server using dnsmasq and [netboot.xyz](https://netboot.xyz). Enables network booting for OS installations without modifying your existing DHCP server. I set this up, because my AT&T gateway doesn't allow setting any kind of DHCP settings, so this worked to let me just plug a computer into my network/switch, reboot and then immediately get to a PXE boot menu that lets me install any of the available OS's.
 
 ## Features
 
