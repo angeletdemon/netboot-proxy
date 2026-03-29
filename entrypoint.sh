@@ -4,7 +4,7 @@ set -e
 # Default values
 DHCP_RANGE="${DHCP_RANGE:-192.168.0.0}"
 NETMASK="${NETMASK:-255.255.255.0}"
-TFTPIP="$(TFTPIP:-192.168.0.140)"
+TFTPIP="${TFTPIP:-192.168.0.140}"
 
 # Generate dnsmasq.conf
 cat > /etc/dnsmasq.conf <<EOF
