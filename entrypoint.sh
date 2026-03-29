@@ -4,6 +4,7 @@ set -e
 # Default values
 DHCP_RANGE="${DHCP_RANGE:-192.168.0.0}"
 NETMASK="${NETMASK:-255.255.255.0}"
+TFTPIP="$(TFTPIP:-192.168.0.140)"
 
 # Generate dnsmasq.conf
 cat > /etc/dnsmasq.conf <<EOF
@@ -23,19 +24,19 @@ dhcp-match=set:uefi64,option:client-arch,9
 dhcp-match=set:uefi-arm64,option:client-arch,11
 
 # Boot files by architecture
-pxe-service=tag:bios,x86PC,"netboot.xyz (BIOS)",netboot.xyz.kpxe
+pxe-service=tag:bios,x86PC,"netboot.xyz (BIOS)",netboot.xyz.kpxe,${TFTPIP}
 dhcp-boot=tag:bios,netboot.xyz.kpxe
 
-pxe-service=tag:uefi64,X86-64_EFI,"netboot.xyz (UEFI)",netboot.xyz.efi
+pxe-service=tag:uefi64,X86-64_EFI,"netboot.xyz (UEFI)",netboot.xyz.efi,${TFTPIP}
 dhcp-boot=tag:uefi64,netboot.xyz.efi
 
-pxe-service=tag:uefi-arm64,ARM64_EFI,"netboot.xyz (ARM64)",netboot.xyz-arm64.efi
+pxe-service=tag:uefi-arm64,ARM64_EFI,"netboot.xyz (ARM64)",netboot.xyz-arm64.efi,${TFTPIP}
 dhcp-boot=tag:uefi-arm64,netboot.xyz-arm64.efi
 
 # Compatibility with limited routers
 dhcp-no-override
 EOF
 
-echo "Starting dnsmasq with DHCP_RANGE=${DHCP_RANGE}, NETMASK=${NETMASK}"
+echo "Starting dnsmasq with DHCP_RANGE=${DHCP_RANGE}, NETMASK=${NETMASK}, TFTPIP=${TFTPIP}"
 
 exec dnsmasq -k --log-facility=-

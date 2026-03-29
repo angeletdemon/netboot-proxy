@@ -17,5 +17,6 @@ RUN chmod +x /entrypoint.sh
 # Environment variables for configuration
 ENV DHCP_RANGE=192.168.0.0
 ENV NETMASK=255.255.255.0
+ENV TFTPIP=192.168.0.140
 
 ENTRYPOINT ["/entrypoint.sh"]
